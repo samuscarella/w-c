@@ -1,0 +1,184 @@
+<div class="container-fluid main-body custom-font show-workout-container">
+
+
+          <!-- <div class="container-fluid testing2 show-workout-title"> -->
+              <div class="row show-workout-label background-color-grey">
+                  <div class="col-md-12">
+                      <h4 class="label-text custom-font white"><em>Title</em></h4>
+                  </div>
+              </div>
+                  <!-- form here on edit page -->
+              <div class="row show-workout-title background-color-grey">
+                  <div class="col-md-12">
+                      <h3 class="workout-title"><%= @workout.title %></h3>
+                  </div>
+              </div>
+          <!-- </div> -->
+          <div class="row">
+            <div class="col-md-12">
+                <%= image_tag("workout-main.jpg", :alt => "Workout Default", :size => "450x300", :class => "workout-main") %>
+            </div>
+          </div>
+          <div class="row show-workout-label-two background-color-grey">
+            <div class="col-md-12">
+                <h4 class="label-text custom-font white"><em>Description</em></h4>
+            </div>
+          </div>
+          <div class="row show-workout-title background-color-grey">
+            <div class="col-md-12">
+                <h4 class="workout-title" style="word-wrap:break-word"><%= @workout.description %></h4>
+            </div>
+          </div>
+          <div class="row show-workout-label-two background-color-grey">
+            <div class="col-md-12">
+                <h4 class="label-text custom-font white"><em>Equipment</em></h4>
+            </div>
+          </div>
+          <div class="row show-workout-title background-color-grey">
+              <div class="col-md-12">
+                  <% @workout.exercises.each do |ex| %>
+                        <h4 class="workout-title"><%= ex.equipment %></h4>
+                  <% end %>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+                <!-- <div class="container-fluid testing2 background-color-grey" id="workout-title"> -->
+                  <div class="row show-workout-label-three background-color-grey">
+                    <div class="col-md-12">
+                      <h4 class="label-text custom-font white"><em>Difficulty</em></h4>
+                    </div>
+                  </div>
+                  <div class="row show-workout-title background-color-grey">
+                      <div class="col-md-12">
+                        <h4 class="workout-title"><%= @workout.difficulty %></h4>
+                      </div>
+                  </div>
+                <!-- </div> -->
+            </div>
+            <div class="col-md-6">
+                <!-- <div class="container-fluid testing2"> -->
+                  <div class="row show-workout-label-three background-color-grey">
+                    <div class="col-md-12">
+                      <h4 class="label-text custom-font white"><em>Duration</em></h4>
+                    </div>
+                  </div>
+                  <div class="row show-workout-title background-color-grey">
+                      <div class="col-md-12">
+                        <h4 class="workout-title"><%= @workout.duration %></h4>
+                      </div>
+                  </div>
+                <!-- </div> -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+                <!-- <div class="container-fluid testing2 background-color-grey" id="workout-title-real"> -->
+                    <div class="row show-workout-label-two background-color-grey">
+                      <div class="col-md-12">
+                        <h4 class="label-text custom-font white"><em>Targeted Muscles</em></h4>
+                      </div>
+                    </div>
+                    <div class="row show-workout-title background-color-grey">
+                      <div class="col-md-12">
+                        <ul style="margin-top:8px">
+                          <% @workout.targeted_muscles.each do |tm| %>
+                            <li class="custom-font white"><%= tm.name %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+          </div>
+          <h1 style="text-align:center">Exercises</h1>
+          <div class="row">
+            <div class="col-md-12">
+              <% @workout.exercises.each do |e| %>
+              <div class="container-fluid testing2 white border-top-workout">
+                <div class="row">
+                  <div class="col-md-6 dotted-border">
+                    <h3 class="custom-font"><%= e.name %></h3>
+                  </div>
+                  <div class="col-md-2 dotted-border">
+                    <h3 class="center-text-now custom-font"><%= e.difficulty %></h3>
+                  </div>
+                  <div class="col-md-4 dotted-border">
+                    <h3 class="right-text-now custom-font"><em>Rating</em>
+                      <span style="margin-left:6%">
+                       <i class="fa fa-star gold"></i>
+                       <i class="fa fa-star gold"></i>
+                       <i class="fa fa-star gold"></i>
+                       <i class="fa fa-star gold"></i>
+                       <i class="fa fa-star gold"></i>
+                     </span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid description-workout-dash workout-div">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="description-workout-text white"><%= e.description %></p>
+                    <p style="text-align:right" class="white">Last Updated On: <%= e.updated_at %></p>
+                    <p style="text-align:right" class="white">Created On: <%= e.created_at %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid description-workout-dash bottom-workout-text padding-tighten">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="custom-font workout-label white">Equipment: <%= e.equipment %></h4>
+                  </div>
+                  <div class="col-md-1">
+                    <h4 class="custom-font workout-label white">Sets: <%= e.sets %></h4>
+                  </div>
+                  <div class="col-md-1">
+                    <h4 class="custom-font workout-label white">Reps:  <%= e.reps %></h4>
+                  </div>
+                  <div class="col-md-4">
+                    <h4 class="custom-font workout-label white right-text-now">Creator:  <%= e.user.username %></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid description-workout-dash tips-workout-dash padding-tighten">
+                <div class="row">
+                    <div class="col-md-12">
+                      <h4 class="custom-font white">Tips</h4>
+                      <% if e.tips.nil? %>
+                        <p class="custom-font white"><em>There are no tips for this exercise yet...</em></p>
+                      <% else %>
+                        <% e.tips.each do |t| %>
+                            <p><em> * <%= t.name %></em></p>
+                        <% end %>
+                      <% end %>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                  <div class="col-md-12">
+                    <%= form_for :tip, remote: true, url: "exercise/#{e.id}/create_tip/", method: :post, :html => { :id => "add_tip" } do |t| %>
+                      <div class="form-group custom-font white">
+                          <%= t.label :name %>
+                          <%= t.text_field :name, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                          <%= t.hidden_field :user_id, :value => session[:current_user_id] %>
+                          <%= t.hidden_field :exercise_id, :value => e.id %>
+                          <input type="submit" class="btn btn-primary add-tip" value="Add Tip">
+                      </div>
+                    <% end %>
+                  </div>
+                </div> -->
+              </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 custom-workout show-workout-bottom-margin">
+                    <%= link_to "Edit Workout", "/edit_workout/#{ @workout.id }", class: "btn btn-info edit-workout", :id => @workout.id  %>
+                    <%= link_to "Delete Workout", @workout, class: "btn btn-danger delete-workout", method: :delete %>
+                  </div>
+                </div>
+</div>
+
+ <!-- add page where you can upload workout stats for each workout and view by targeted muscle -->

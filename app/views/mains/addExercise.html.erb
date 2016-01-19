@@ -1,0 +1,159 @@
+<div class="container-fluid main-body">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 style="text-align:center;margin:9% 0 3% 0;">Add Exercises</h1>
+        <div id="exercise-append">
+          <% if @exercises %>
+            <% @exercises.each do |e| %>
+                  <div class="container-fluid testing2">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <form action="/delete_exercise" data-remote="true" method="POST">
+                                  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                                  <input type="hidden" name="_method" value="patch">
+                                  <input type="hidden" name="exercise_id" value="<%= e.id %>">
+                                  <input type="hidden" name="workout_id" value="<%= @workout.id %>">
+                                  <input type="submit" class="btn btn-danger delete-exercise" value="X">
+                                </form>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4 dotted-border">
+                                <h3><%= e.name %></h3>
+                              </div>
+                              <div class="col-md-4 dotted-border">
+                                <h3 class="center-text-now"><%= e.difficulty %></h3>
+                              </div>
+                              <div class="col-md-4 dotted-border">
+                                <h3 class="right-text-now"><span style="margin-right:25px"><em>Rating</em></span> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i></h3>
+                              </div>
+                            </div>
+                            <div class="row description-box-ex">
+                              <div class="col-md-12">
+                                <p><%= e.description %></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6 dotted-border">
+                                <h4>Equipment: <%= e.equipment %></h4>
+                              </div>
+                              <div class="col-md-4 dotted-border">
+                                <h4 class="center-text-now">Sets: <%= e.sets %> | Reps: <%= e.reps %></h4>
+                              </div>
+                              <div class="col-md-2">
+                                <h4 class="center-text-now">creator: <%= @workout.user.username %></h4>
+                              </div>
+                            </div>
+                    </div>
+                      <div class="container-fluid tip-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <% e.tips.each do |t| %>
+                                  <p><em><form action="/delete_tip" data-remote="true" method="POST">
+                                    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="tip_id" value="<%= t.id %>">
+                                    <input type="hidden" name="exercise_id" value="<%= e.id %>">
+                                    <input type="hidden" name="workout_id" value="<%= @workout.id %>">
+                                    <input type="submit" class="btn btn-danger delete-tip" value="x">
+                                  </form> * <%= t.name %></em></p>
+                                <% end %>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <%= form_for :tip, remote: true, url: "exercise/#{e.id}/create_tip/", method: :post, :html => { :id => "add_tip" } do |t| %>
+                              <div class="form-group">
+                                  <%= t.label :name %>
+                                  <%= t.text_field :name, class: "form-control" %>
+                              </div>
+                              <div class="form-group">
+                                  <%= t.hidden_field :user_id, :value => session[:current_user_id] %>
+                                  <%= t.hidden_field :exercise_id, :value => e.id %>
+                                  <input type="submit" class="btn btn-primary add-tip" value="Add Tip">
+                              </div>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+              <% end %>
+          <% end %>
+        </div>
+                <!-- </div> -->
+
+      <!-- ADD NOTE BOX -->
+      <!-- <% if flash[:exerciseErrors] %>
+        <% flash[:exerciseErrors].each do |e| %>
+          <p style="color:red"><%= e %></p>
+        <% end %>
+      <% end %> -->
+      <!-- <div id="errors-box">
+      </div> -->
+      <div class="container-fluid testing">
+        <div class="row">
+          <div class="col-md-12">
+              <%= form_for :exercise, remote: true, url: 'create_exercise', format: :json, :html => { :id => "exercise_form" } do |e| %>
+
+                <div id="error_explanation" style='display:none;'>
+                  <ul>
+                    <!-- <% if @exercise %> -->
+                      <% if @exercise.errors.any? %>
+                        <% @exercise.errors.full_messages.each do |msg| %>
+                          <li style="color:red"><%= msg %></li>
+                        <% end %>
+                      <% end %>
+                    <!-- <% end %> -->
+                  </ul>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <%= e.label :name %>
+                    <%= e.text_field :name, class: "form-control" %>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= e.label :difficulty %>
+                    <%= e.select(:difficulty, options_for_select([['Beginner', 'Beginner'], ['Intermediate', 'Intermediate'], ['Advanced', 'Advanced'], ['Expert', 'Expert']]), {}, { :class => "form-control" }) %>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= label :exercise, :user_id %>
+                    <%= text_field :exercise, :user_id, class: "form-control", value: @workout.user.username, placeholder: @workout.user.username, readonly: true %>
+                  </div>
+                </div>
+                <!-- SEPERATOR -->
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <%= e.label :description %>
+                    <%= e.text_field :description, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                      <%= e.label :equipment %>
+                      <%= e.collection_select(:equipment, Equipment.all, :name, :name, { :prompt => true }, { :class => 'form-control' }) %>
+                    </div>
+                    <div class="col-sm-4">
+                      <%= e.label :sets %>
+                      <%= e.text_field :sets, class: "form-control" %>
+                    </div>
+                    <div class="col-sm-4">
+                      <%= e.label :reps %>
+                      <%= e.text_field :reps, class: "form-control" %>
+                    </div>
+                      <%= e.hidden_field :user_id, :value => @workout.user.id %>
+                      <%= e.hidden_field :workout_id, :value => @workout.id %>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                          <%= e.submit "Add Exercise", class: "btn btn-primary add-exercise" %>
+                    </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+          <%= link_to 'Complete Workout', 'show_workout', id: @workout.id, class: "btn btn-warning finish-workout" %>
+          <!-- <a href="/workout/#{ @workout.id }" class="btn btn-warning finish-workout">Finish</a> -->
+        </div>
+    </div>
+</div>
