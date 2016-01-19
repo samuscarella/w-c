@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160111210509) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "equipment", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 20160111210509) do
     t.string   "equipment"
   end
 
-  add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
-  add_index "exercises", ["workout_id"], name: "index_exercises_on_workout_id"
+  add_index "exercises", ["user_id"], name: "index_exercises_on_user_id", using: :btree
+  add_index "exercises", ["workout_id"], name: "index_exercises_on_workout_id", using: :btree
 
   create_table "targeted_muscles", force: true do |t|
     t.string   "name"
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 20160111210509) do
     t.integer  "user_id"
   end
 
-  add_index "tips", ["exercise_id"], name: "index_tips_on_exercise_id"
-  add_index "tips", ["user_id"], name: "index_tips_on_user_id"
+  add_index "tips", ["exercise_id"], name: "index_tips_on_exercise_id", using: :btree
+  add_index "tips", ["user_id"], name: "index_tips_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -79,6 +82,6 @@ ActiveRecord::Schema.define(version: 20160111210509) do
     t.string   "equipment"
   end
 
-  add_index "workouts", ["user_id"], name: "index_workouts_on_user_id"
+  add_index "workouts", ["user_id"], name: "index_workouts_on_user_id", using: :btree
 
 end

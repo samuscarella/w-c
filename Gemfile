@@ -39,4 +39,6 @@ gem 'railties'
 # gem 'debugger', group: [:development, :test]
 gem 'hirb'
 
+gem 'rails_12factor', group: :production
+
 gem 'pg'
