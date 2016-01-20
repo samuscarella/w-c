@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'workout/:id' => 'mains#showWorkout'
   get 'workout' => 'mains#showWorkout'
   post 'exercise/:id/create_tip' => 'mains#createTip'
-
+  get 'workouts' => 'mains#myWorkouts'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

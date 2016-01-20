@@ -20,6 +20,9 @@ class MainsController < ApplicationController
     @workout = Workout.find(params[:id])
   end
 
+  def myWorkouts
+    @workouts = User.find(session[:current_user_id]).workouts
+  end
   def editWorkout
     @workout = Workout.find(params[:id])
   end
