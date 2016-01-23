@@ -157,7 +157,7 @@
   display: block;
 }
 .custom-workout {
-  margin: 4% 25% 0 25%;
+  // margin: 4% 25% 0 25%;
 }
 .delete-workout {
   width: 25%;
@@ -212,7 +212,7 @@
   margin-top: 10%;
 }
 .add-exercise {
-  margin: 4% 48%;
+  margin: 20% 0;
   width: 25%;
 }
 .show-workout-container {
@@ -375,4 +375,40 @@
 .add-tip-button {
   margin-left: 92%;
   margin-top: 1%;
+}
+.button-centering {
+  width: 200px;
+}
+.dub-button-top {
+  margin: 10% 0;
+}
+.dub-button-top {
+  margin: 10% 0;
+}
+
+// small screen queries...
+
+@media only screen and (max-width: 750px) {
+
+    .workout-dash-title {
+        margin-top: 50px;
+    }
+
+}
+@media only screen and (min-width: 750px) {
+
+    .inline-dub-button {
+        display: inline-block;
+    }
+    .inline-dub-button-container {
+      width: 450px;
+    }
+
+}
+@media only screen and (min-width: 320px), only screen and (max-width: 750px) {
+
+    .sm-add-exercise {
+        width: 200px;
+    }
+
 }

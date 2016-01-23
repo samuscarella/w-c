@@ -1,6 +1,6 @@
 class Workout < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :targeted_muscles
-  has_many :exercises
+  has_many :exercises, dependent: :destroy
   validates :title, :description, :difficulty, :duration, :targeted_muscles, :user_id, presence: true
 end

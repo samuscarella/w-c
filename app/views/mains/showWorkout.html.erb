@@ -175,8 +175,14 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12 custom-workout show-workout-bottom-margin">
-                    <%= link_to "Edit Workout", "/edit_workout/#{ @workout.id }", class: "btn btn-info edit-workout", :id => @workout.id  %>
-                    <%= link_to "Delete Workout", @workout, class: "btn btn-danger delete-workout", method: :delete %>
+                    <div class="container inline-dub-button-container">
+                      <div class="container button-centering inline-dub-button">
+                        <%= link_to "Edit Workout", "/edit_workout/#{ @workout.id }", class: "sm-add-exercise btn btn-info edit-workout dub-button-top", :id => @workout.id  %>
+                      </div>
+                      <div class="container button-centering inline-dub-button">
+                        <%= link_to "Delete Workout", @workout, class: "sm-add-exercise btn btn-danger delete-workout dub-button-bottom", method: :delete %>
+                      </div>
+                    </div>
                   </div>
                 </div>
 </div>
