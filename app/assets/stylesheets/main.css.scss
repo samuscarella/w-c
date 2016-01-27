@@ -385,6 +385,9 @@
 .dub-button-top {
   margin: 10% 0;
 }
+.button-width-full {
+  width: 118%;
+}
 
 // small screen queries...
 
@@ -395,20 +398,24 @@
     }
 
 }
+
+@media only screen and (min-width: 320px), only screen and (max-width: 750px) {
+
+    .sm-add-exercise {
+        width: 200px;
+    }
+
+}
+
+// medium screen queries...
+
 @media only screen and (min-width: 750px) {
 
     .inline-dub-button {
         display: inline-block;
     }
     .inline-dub-button-container {
-      width: 450px;
-    }
-
-}
-@media only screen and (min-width: 320px), only screen and (max-width: 750px) {
-
-    .sm-add-exercise {
-        width: 200px;
+        width: 450px;
     }
 
 }

@@ -41,4 +41,5 @@ gem 'hirb'
 
 gem 'rails_12factor', group: :production
 
+# gem to allow database to function properly on heroku
 gem 'pg'
