@@ -50,7 +50,7 @@ class MainsController < ApplicationController
     respond_to do |format|
       if @tip.save
          format.html { redirect_to controller: 'mains', action: 'addExercise', tip: @tip }
-         format.json
+         format.json {}
       else
          format.html { render action: 'addExercise' }
          format.json { render json: @tip.errors.full_messages, status: :unprocessable_entity }
