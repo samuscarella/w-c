@@ -116,9 +116,7 @@
 .right-text-now {
   text-align: right;
 }
-.delete-exercise {
-  margin: 0 48%;
-}
+
 .delete-tip {
   padding: 3px 9px;
 }
@@ -388,7 +386,12 @@
 .button-width-full {
   width: 118%;
 }
-
+.center-delete-ex {
+  margin: 1% 47%;
+}
+.delete-exercise {
+  width: 40px;
+}
 // small screen queries...
 
 @media only screen and (max-width: 750px) {
