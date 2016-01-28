@@ -1,0 +1,3 @@
+$('.exercise_form').on('ajax:success', function() {
+    $('#results').append("<%= j render @exercise, :locals => {:exercise => @exercise} %>");
+});

@@ -2,48 +2,9 @@ class MainsController < ApplicationController
   before_filter :require_login
   respond_to :html, :js
 
-  def index
-  end
 
   def dash
     @workouts = Workout.all
-  end
-
-  def myWorkouts
-  end
-
-  def newWorkout
-    @workout = Workout.new
-  end
-
-  def showWorkout
-    @workout = Workout.find(params[:id])
-  end
-
-  def myWorkouts
-    @workouts = User.find(session[:current_user_id]).workouts
-  end
-  def editWorkout
-    @workout = Workout.find(params[:id])
-  end
-
-  def addExercise
-    @user = User.find(session[:current_user_id])
-    @workout = Workout.find(params[:id])
-    @exercises = @workout.exercises
-    @exercise = Exercise.new
-    # respond_with(@exercises)
-    # dont know if i need the includes tips part at the end above
-  end
-
-  def createWorkout
-    w = Workout.create( new_workout )
-    if w.errors.any?
-      flash[:workoutErrors] = w.errors.full_messages
-      redirect_to '/new_workout'
-    else
-      redirect_to controller: 'mains', action: 'addExercise', id: w.id
-    end
   end
 
   def createTip
@@ -74,45 +35,6 @@ class MainsController < ApplicationController
     end
   end
 
-  def createExercise
-    @exercise = Exercise.new( new_exercise )
-    respond_to do |format|
-      if @exercise.save
-         format.html { redirect_to controller: 'mains', action: 'addExercise', id: params[:workout_id]  }
-         format.js
-       else
-         format.html { render action: 'addExercise' }
-         format.json { render json: @exercise.errors.full_messages, status: :unprocessable_entity }
-       end
-     end
-   end
-
-  def updateWorkout
-    @workout = Workout.find(params[:workout][:workout_id])
-    respond_to do |format|
-    if @workout.update_attributes( new_workout )
-      format.html { redirect_to controller: 'mains', action: 'editWorkout', id: @workout.id }
-      format.json
-     else
-      format.html { render action: 'editWorkout' }
-      format.json { render json: @workout.errors, status: :unprocessable_entity }
-     end
-    end
-  end
-
-  def updateExercise
-    @exercise = Exercise.find(params[:exercise][:id])
-    @workout = Workout.find(params[:exercise][:workout_id])
-    respond_to do |format|
-    if @exercise.update_attributes( new_exercise )
-      format.html { redirect_to controller: 'mains', action: 'editWorkout', id: @workout.id }
-      format.json
-     else
-      format.html { render action: 'editWorkout' }
-      format.json { render json: @workout.errors, status: :unprocessable_entity }
-     end
-    end
-  end
 
   def updateTip
     @tip = Tip.find(params[:tip][:id])
@@ -128,33 +50,6 @@ class MainsController < ApplicationController
     end
   end
 
-  def deleteWorkout
-    @workout = Workout.find(params[:id])
-    respond_to do |format|
-      if @workout.destroy
-         format.html { redirect_to controller: 'mains', action: 'dash' }
-         format.json
-       else
-         format.html { render action: 'editWorkout' }
-         format.json { render json: @workout.errors.full_messages, status: :unprocessable_entity }
-       end
-     end
-  end
-
-  def deleteExercise
-    @exercise = Exercise.find(params[:id])
-    respond_to do |format|
-      if @exercise.destroy
-        format.html { redirect_to controller: 'mains', action: 'editWorkout', id: params[:workout_id] }
-        format.json { head :no_content }
-        format.js   { render :layout => false }
-       else
-         format.html { render action: 'addExercise' }
-         format.json { render json: @tip.errors.full_messages, status: :unprocessable_entity }
-       end
-     end
-  end
-
   def deleteTip
     @tip = Tip.find(params[:tip_id])
     respond_to do |format|
@@ -168,7 +63,7 @@ class MainsController < ApplicationController
      end
   end
 
-  # PRIVATE METHODS FOR IMPROVED SECURITY
+  # private methods for improved security
 
   private
   def workout_update_params
