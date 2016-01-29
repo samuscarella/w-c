@@ -7,15 +7,13 @@ class ExercisesController < ApplicationController
     @workout = Workout.find(params[:id])
     @exercises = @workout.exercises
     @exercise = Exercise.new
-    # respond_with(@exercises)
-    # dont know if i need the includes tips part at the end above
   end
 
   def createExercise
     @exercise = Exercise.new( new_exercise )
     respond_to do |format|
       if @exercise.save
-         format.html { redirect_to controller: 'mains', action: 'addExercise', id: params[:workout_id]  }
+         format.html { redirect_to controller: 'mains', action: 'addExercise', id: params[:workout_id] }
          format.js
        else
          format.html { render action: 'addExercise' }

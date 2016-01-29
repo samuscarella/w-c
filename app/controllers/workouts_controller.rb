@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
   before_filter :require_login
   respond_to :html, :js
+
   # navigation methods
 
   def newWorkout
@@ -11,6 +12,7 @@ class WorkoutsController < ApplicationController
   end
   def editWorkout
     @workout = Workout.find(params[:id])
+    @exercises = @workout.exercises
   end
 
   # crud operations
@@ -55,10 +57,28 @@ class WorkoutsController < ApplicationController
      end
   end
 
-  # private methods for improved security
+  def createExercise
+    @exercise = Exercise.new( new_exercise )
+    respond_to do |format|
+      if @exercise.save
+         format.html { redirect_to controller: 'workouts', action: 'editWorkout', id: params[:workout_id] }
+         format.js
+       else
+         format.html { render action: 'addExercise' }
+         format.json { render json: @exercise.errors.full_messages, status: :unprocessable_entity }
+       end
+     end
+  end
+
+  # private object methods for improved security
 
   private
   def new_workout
     params.require(:workout).permit(:title, :description, :difficulty, :duration, :user_id, targeted_muscle_ids:[])
   end
+  private
+  def new_exercise
+    params.require(:exercise).permit(:name, :difficulty, :user_id, :description, :equipment, :sets, :reps, :workout_id)
+  end
+
 end

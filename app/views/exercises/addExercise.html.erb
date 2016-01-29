@@ -2,25 +2,19 @@
   <div class="row">
     <div class="col-md-12">
       <h1 style="text-align:center;margin:9% 0 3% 0;">Add Exercises</h1>
-      <div id="results">
-
+      <div class="exercises-div">
+        <!-- <% if @exercises %> -->
           <% @exercises.each do |exercise| %>
-            <%= render(:partial => exercise, :locals => {:exercise => exercise}) %>
+            <%= render(:partial => exercise, :locals => {exercise: @exercise }) %>
           <% end %>
-
+        <!-- <% end %> -->
       </div>
       <div class="container-fluid testing">
         <div class="row">
           <div class="col-md-12">
-            <%= form_for @exercise, url: 'create_exercise', remote: true, :html => { :class => "exercise_form" } do |e| %>
-              <div id="error_explanation" style='display:none;'>
-                <ul>
-                    <% if @exercise.errors.any? %>
-                      <% @exercise.errors.full_messages.each do |msg| %>
-                        <li style="color:red"><%= msg %></li>
-                      <% end %>
-                    <% end %>
-                </ul>
+            <%= form_for @exercise, url: 'create_exercise', remote: true, :html => { :class => "exercise_form_add" } do |e| %>
+              <div id="error_explanation">
+
               </div>
               <div class="form-group">
                 <div class="col-sm-4">

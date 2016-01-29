@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'create_workout' => 'workouts#createWorkout'
   get 'workout/:id/newExercise' => 'exercises#addExercise'
   post 'workout/:id/create_exercise' => 'exercises#createExercise'
-  post 'edit_workout/create_exercise' => 'exercises#createExercise'
+  post 'edit_workout/create_exercise' => 'workouts#createExercise'
   post 'workout/:id/exercise/:exercise_id/create_tip' => 'tips#createTip'
   post 'edit_workout/exercise/:exercise_id/create_tip' => 'tips#createTipEdit'
   delete 'exercise' => 'exercises#deleteExercise'

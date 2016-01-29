@@ -155,15 +155,15 @@
           <% end %>
             <div class="row">
               <div class="col-md-12">
-                <% if @exercises %>
-                  <% @exercises.each do |exercise| %>
-                    <%= render exercise %>
-                  <% end %>
-                <% end %>
+                <div class="exercises-div">
+                    <% @exercises.each do |exercise| %>
+                      <%= render(:partial => exercise, :locals => {exercise: @exercise }) %>
+                    <% end %>
+                </div>
                       <div class="container-fluid testing">
                           <div class="row">
                               <div class="col-md-12">
-                                <%= form_for :exercise, remote: true, url: 'create_exercise', format: :json, :html => { :id => "exercise_form" } do |e| %>
+                                <%= form_for :exercise, url: 'create_exercise', remote: true, :html => { :id => "exercise_form_edit" } do |e| %>
 
                                   <div id="error_explanation" style='display:none;'>
                                     <ul>

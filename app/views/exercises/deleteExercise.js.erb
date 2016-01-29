@@ -1,3 +1,4 @@
 $('.delete-exercise').bind('ajax:success', function() {
     $('div#<%= dom_id(@exercise) %>').fadeOut();
+    return false;
 });
