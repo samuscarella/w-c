@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   root 'sessions#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
   post 'register' => 'sessions#register'
   post 'login' => 'sessions#login'
   get 'logout' => 'sessions#logout'
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
   get 'workout/:id/show_workout' => 'workouts#showWorkout'
   patch 'edit_workout/exercise/update_tip' => 'tips#updateTip'
   put 'edit_workout/update_workout' => 'workouts#updateWorkout'
-  patch 'edit_workout/update_exercise' => 'exercises#updateExercise'
+  patch 'edit_workout/update_exercise' => 'workouts#updateExercise'
   get 'edit_workout/:id' => 'workouts#editWorkout'
   get 'workout/:id' => 'workouts#showWorkout'
   get 'workout' => 'workouts#showWorkout'

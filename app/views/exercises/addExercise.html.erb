@@ -3,16 +3,14 @@
     <div class="col-md-12">
       <h1 style="text-align:center;margin:9% 0 3% 0;">Add Exercises</h1>
       <div class="exercises-div">
-        <!-- <% if @exercises %> -->
-          <% @exercises.each do |exercise| %>
-            <%= render(:partial => exercise, :locals => {exercise: @exercise }) %>
-          <% end %>
-        <!-- <% end %> -->
+        <% @exercises.each do |exercise| %>
+          <%= render exercise %>
+        <% end %>
       </div>
       <div class="container-fluid testing">
         <div class="row">
           <div class="col-md-12">
-            <%= form_for @exercise, url: 'create_exercise', remote: true, :html => { :class => "exercise_form_add" } do |e| %>
+            <%= form_for @exercise, url: 'create_exercise', remote: true, :html => { :id => "exercise_form_add" } do |e| %>
               <div id="error_explanation">
 
               </div>

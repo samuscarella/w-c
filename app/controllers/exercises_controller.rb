@@ -13,7 +13,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new( new_exercise )
     respond_to do |format|
       if @exercise.save
-         format.html { redirect_to controller: 'mains', action: 'addExercise', id: params[:workout_id] }
+        @exercises = @exercise.workout.exercises
          format.js
        else
          format.html { render action: 'addExercise' }

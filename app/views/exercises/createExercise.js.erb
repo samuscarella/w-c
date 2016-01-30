@@ -1,5 +1,5 @@
 $('#exercise_form_add').on('ajax:success', function() {
-    $('.exercises-div').append("<%= j render @exercise, :locals => {:exercise => @exercise, :workout => @workout} %>");
+    $('.exercises-div').html("<%= j render @exercises %>");
     $('.form-control').val("");
     return false;
 });

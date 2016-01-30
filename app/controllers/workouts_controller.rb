@@ -57,6 +57,8 @@ class WorkoutsController < ApplicationController
      end
   end
 
+  # exercise methods
+
   def createExercise
     @exercise = Exercise.new( new_exercise )
     respond_to do |format|
@@ -68,6 +70,20 @@ class WorkoutsController < ApplicationController
          format.json { render json: @exercise.errors.full_messages, status: :unprocessable_entity }
        end
      end
+  end
+
+  def updateExercise
+    @exercise = Exercise.find(params[:exercise][:id])
+    @workout = Workout.find(params[:exercise][:workout_id])
+    respond_to do |format|
+    if @exercise.update_attributes( new_exercise )
+      format.html { redirect_to controller: 'workouts', action: 'editWorkout', id: @workout.id }
+      format.json
+     else
+      format.html { render action: 'editWorkout' }
+      format.json { render json: @workout.errors, status: :unprocessable_entity }
+     end
+    end
   end
 
   # private object methods for improved security
