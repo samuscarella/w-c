@@ -35,7 +35,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:workout][:workout_id])
     respond_to do |format|
     if @workout.update_attributes( new_workout )
-      format.html { redirect_to controller: 'mains', action: 'editWorkout', id: @workout.id }
+      format.html { redirect_to controller: 'workouts', action: 'editWorkout', id: @workout.id }
       format.json
      else
       format.html { render action: 'editWorkout' }
@@ -61,10 +61,11 @@ class WorkoutsController < ApplicationController
     @exercise = Exercise.new( new_exercise )
     respond_to do |format|
       if @exercise.save
-         format.html { redirect_to controller: 'workouts', action: 'editWorkout', id: params[:workout_id] }
-         format.js
+        # format.json { render json: @exercise, :status => :created }
+        # format.html { redirect_to controller: 'workouts', action: 'editWorkout', id: params[:workout_id] }
+        format.js
        else
-         format.html { render action: 'addExercise' }
+         format.html { render action: 'editWorkout', id: params[:id] }
          format.json { render json: @exercise.errors.full_messages, status: :unprocessable_entity }
        end
      end

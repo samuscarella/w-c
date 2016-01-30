@@ -1,0 +1,22 @@
+$('#exercise_form_add').on('ajax:success', function() {
+    $('.exercises-div').append("<%= j render @exercise, :locals => {:exercise => @exercise, :workout => @workout} %>");
+    $('.form-control').val("");
+    return false;
+});
+
+// $('#exercise_form_edit').on('ajax:beforeSend', function() {
+//   $.ajax({
+//     cache: false
+//   });
+//   return false;
+// });
+$('#exercise_form_edit').on('ajax:success', function() {
+    $('.exercises-div').append("<%= j render 'exercise', locals: { exercise: @exercise } %>");
+    $('.form-control').val("");
+    return false;
+});
+// $('#exercise_form_edit').on('ajax:success', function() {
+//     $('.exercises-div').append("<%= j render @exercise, :locals => {:exercise => @exercise, :workout => @workout} %>");
+//     $('.form-control').val("");
+//     return false;
+// });

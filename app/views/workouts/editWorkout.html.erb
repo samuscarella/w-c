@@ -5,7 +5,7 @@
                     <h4 class="label-text custom-font white"><span class="glyphicon glyphicon-edit"></span> <em>Title</em></h4>
                   </div>
                 </div>
-          <%= form_for @workout, url: 'update_workout', format: :json, method: :put, :html => { :id => "edit_workout_form" } do |ew| %>
+          <%= form_for @workout, url: 'update_workout', remote: true, format: :json, method: :put, :html => { :id => "edit_workout_form" } do |ew| %>
                 <div class="row show-workout-title background-color-grey">
                   <div class="col-md-12 edit-workout-field">
                     <div class="form-group">
@@ -156,39 +156,27 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="exercises-div">
-                    <% @exercises.each do |exercise| %>
-                      <%= render(:partial => exercise, :locals => {exercise: @exercise }) %>
-                    <% end %>
+                  <!-- <% @exercises.each do |exercise| %> -->
+                    <%= render 'exercise' %>
+                  <!-- <% end %> -->
                 </div>
                       <div class="container-fluid testing">
                           <div class="row">
                               <div class="col-md-12">
                                 <%= form_for :exercise, url: 'create_exercise', remote: true, :html => { :id => "exercise_form_edit" } do |e| %>
 
-                                  <div id="error_explanation" style='display:none;'>
-                                    <ul>
-                                      <!-- <% if @exercise %> -->
-                                        <% if @exercise.errors.any? %>
-                                          <% @exercise.errors.full_messages.each do |msg| %>
-                                            <li style="color:red"><%= msg %></li>
-                                          <% end %>
-                                        <% end %>
-                                      <!-- <% end %> -->
-                                    </ul>
-                                  </div>
-
                                   <div class="form-group">
                                     <div class="col-sm-4">
                                       <%= e.label :name %>
-                                      <%= e.text_field :name, class: "form-control" %>
+                                      <%= e.text_field :name, class: "form-control", id: "exercise-name" %>
                                     </div>
                                     <div class="col-sm-4">
                                       <%= e.label :difficulty %>
-                                      <%= e.select(:difficulty, options_for_select([['Beginner', 'Beginner'], ['Intermediate', 'Intermediate'], ['Advanced', 'Advanced'], ['Expert', 'Expert']]), {}, { :class => "form-control" }) %>
+                                      <%= e.select(:difficulty, options_for_select([['Beginner', 'Beginner'], ['Intermediate', 'Intermediate'], ['Advanced', 'Advanced'], ['Expert', 'Expert']]), {}, { :class => "form-control", id: "exercise-difficulty" }) %>
                                     </div>
                                     <div class="col-sm-4">
-                                      <%= label :exercise, :user_id %>
-                                      <%= text_field :exercise, :user_id, class: "form-control", value: @workout.user.username, placeholder: @workout.user.username, readonly: true %>
+                                      <%= label :exercise, :username %>
+                                      <%= text_field :exercise, :username, class: "form-control", placeholder: @workout.user.username, disabled: true %>
                                     </div>
                                   </div>
                                   <div class="form-group">
