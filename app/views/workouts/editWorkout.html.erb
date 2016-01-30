@@ -156,9 +156,9 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="exercises-div">
-                  <!-- <% @exercises.each do |exercise| %> -->
-                    <%= render 'exercise' %>
-                  <!-- <% end %> -->
+                  <% @exercises.each do |exercise| %>
+                    <%= render exercise %>
+                  <% end %>
                 </div>
                       <div class="container-fluid testing">
                           <div class="row">

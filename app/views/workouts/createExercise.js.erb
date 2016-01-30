@@ -1,5 +1,5 @@
 $('#exercise_form_edit').on('ajax:success', function() {
-    $('.exercises-div').append("<%= j render @exercise %>");
+    $('.exercises-div').html("<%= j render @exercises %>");
     $('.form-control').val("");
     return false;
 });
