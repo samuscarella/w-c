@@ -3,3 +3,8 @@ $('#exercise_form_add').on('ajax:success', function() {
     $('.form-control').val("");
     return false;
 });
+$('#exercise_form_add').on('ajax:error', function() {
+    $('.exercise-errors').html("<%= j render @exercises %>");
+    $('.form-control').val("");
+    return false;
+});

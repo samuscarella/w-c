@@ -14,12 +14,11 @@ class ExercisesController < ApplicationController
     respond_to do |format|
       if @exercise.save
         @exercises = @exercise.workout.exercises
-         format.js
-       else
-         format.html { render action: 'addExercise' }
-         format.json { render json: @exercise.errors.full_messages, status: :unprocessable_entity }
-       end
-     end
+        format.js
+      else
+        format.js
+      end
+    end
   end
 
   def updateExercise

@@ -14,15 +14,17 @@
  *= require_self
  */
 body {
-  background-color: #F3DE8A;
+  background-color: #FDCA40;
   /*background-color: #FA8334;*/
-  font-family: 'Century Gothic';
+  /*font-family: 'Century Gothic';*/
   margin: 0;
   padding: 0;
 }
+
 .right-nav {
   float: right;
 }
+
 .search-bar {
   width: 33%;
 }
