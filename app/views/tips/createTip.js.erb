@@ -1,0 +1,5 @@
+$('#tip_form_edit').on('ajax:success', function() {
+    $('.tips-display').html(" j render @tips ");
+    $('.form-control').val("");
+    return false;
+});

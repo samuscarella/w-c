@@ -1,3 +1,48 @@
 // Place all the styles related to the Workouts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.section-div  {
+  background-color: white;
+  margin: 2% 0;
+  padding: 2%;
+  border: solid black 2px;
+  border-radius: 6px;
+}
+#wrapper {
+  padding-top: 5%;
+}
+.section-div-title {
+  background-color: white;
+  margin: 6% 0 0 0;
+  border: solid black 2px;
+  border-radius: 6px;
+}
+.section-div-data {
+  background-color: white;
+  margin: 0;
+  border: solid black 2px;
+  border-top: none;
+  border-radius: 6px;
+}
+.workout-main {
+  display: block;
+  margin:  3% auto;
+  border-radius: 6px;
+  border: solid black 1px;
+}
+.after-img-containers {
+  margin: 0;
+}
+.section-div-name {
+  background-color: white;
+  margin: 2% 0 0 0;
+  border: solid black 2px;
+  border-radius: 6px;
+}
+.section-div-query {
+  background-color: white;
+  margin: 0;
+  border: solid black 2px;
+  border-top: none;
+  border-radius: 6px;
+}

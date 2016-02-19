@@ -13,18 +13,31 @@
  *= require_tree .
  *= require_self
  */
+ /*html {
+   height: 100%;
+   width: 100%;
+ }*/
 body {
-  background-color: #FDCA40;
+  /*background-color: #EBF5EE;*/
+  /*background-color: #FDCA40;*/
   /*background-color: #FA8334;*/
-  /*font-family: 'Century Gothic';*/
+  background-color: #F4E04D;
+  font-family: 'Century Gothic';
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
 }
-
-.right-nav {
-  float: right;
-}
-
 .search-bar {
   width: 33%;
+}
+.star {
+  display: inline-block;
+}
+.white-text {
+  color: white;
+}
+.black-text {
+  color: black;
 }

@@ -1,9 +1,13 @@
 <%= div_for exercise do %>
-    <div class="container-fluid testing2">
+    <div class="container-fluid edit-exercise">
         <div class="row">
           <div class="col-md-12">
-            <div class="container center-delete-ex">
-              <%= link_to "x", exercise_path(:id => exercise.id, :workout_id => exercise.workout.id), method: :delete, :remote => true, :class => "btn btn-danger delete-exercise" %>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                    <%= button_to "x", exercise_path(:id => exercise.id, :workout_id => exercise.workout.id), method: :delete, :remote => true, :class => "btn btn-danger delete-exercise" %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -61,40 +65,35 @@
           </div>
         </div>
       <% end %>
-      <div class="container-fluid description-workout-dash tips-workout-dash ">
-      <div class="row">
-      <div class="col-md-12">
-        <h4 class="custom-font white">Tips</h4>
-        <% if exercise.tips.nil? %>
-          <p class="custom-font white"><em>There are no tips for this exercise yet...</em></p>
-        <% else %>
-          <% exercise.tips.each do |t| %>
-            <p><em><form action="/delete_tip" data-remote="true" method="POST">
-              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-              <input type="hidden" name="_method" value="delete">
-              <input type="hidden" name="tip_id" value="<%= t.id %>">
-              <input type="hidden" name="exercise_id" value="<%= exercise.id %>">
-              <input type="hidden" name="workout_id" value="<%= @workout.id %>">
-              <input type="submit" class="btn btn-danger delete-tip" value="x">
-            </form> * <%= t.name %></em></p>
-          <% end %>
-        <% end %>
+      <div class="container-fluid edit-exercise-tip-div">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="custom-font white">Tips</h4>
+            <p id="tips-display">
+            <% if exercise.tips == 0 %>
+              <p class="custom-font white"><em>There are no tips for this exercise yet...</em></p>
+            <% else %>
+                <% exercise.tips.each do |tip| %>
+                  <%= render tip %>
+                <% end %>
+            <% end %>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= form_for :tip, remote: true, url: "exercise/#{exercise.id}/create_tip/", method: :post, :html => { :id => "tip_form_edit", :class => 'white custom-font' } do |t| %>
+              <!-- <div class="form-group white"> -->
+                  <%= t.label :name %>
+                  <%= t.text_field :name, class: "form-control" %>
+              <!-- </div> -->
+              <!-- <div class="form-group"> -->
+                  <%= t.hidden_field :user_id, :value => session[:current_user_id] %>
+                  <%= t.hidden_field :exercise_id, :value => exercise.id %>
+                  <input type="submit" class="btn btn-warning add-tip-button" value="Add Tip">
+              <!-- </div> -->
+            <% end %>
+          </div>
+        </div>
       </div>
-      </div>
-      <div class="row">
-      <div class="col-md-12">
-      <%= form_for :tip, remote: true, url: "exercise/#{exercise.id}/create_tip/", method: :post, :html => { :id => "tip_form_edit", :class => 'white custom-font' } do |t| %>
-        <!-- <div class="form-group white"> -->
-            <%= t.label :name %>
-            <%= t.text_field :name, class: "form-control" %>
-        <!-- </div> -->
-        <!-- <div class="form-group"> -->
-            <%= t.hidden_field :user_id, :value => session[:current_user_id] %>
-            <%= t.hidden_field :exercise_id, :value => exercise.id %>
-            <input type="submit" class="btn btn-warning add-tip-button" value="Add Tip">
-        <!-- </div> -->
-      <% end %>
-      </div>
-    </div>
-  </div>
 <% end %>

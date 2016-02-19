@@ -45,6 +45,8 @@
                     <div class="col-md-2 dotted-border">
                       <%= ee.label :reps %>
                       <%= ee.text_field :reps, placeholder: @exercise.reps, class: "edit-workout-text form-control" %>
+                      <%= ee.hidden_field :id, :value => @exercise.id %>
+                      <%= ee.hidden_field :workout_id, :value => @exercise.workout.id %>
                     </div>
                     <div class="col-md-2">
                       <h4 class="center-text-now">creator: <%= @exercise.user.username %></h4>
@@ -52,11 +54,11 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <%= ee.hidden_field :id, :value => @exercise.id %>
-                  <%= ee.hidden_field :workout_id, :value => @exercise.workout.id %>
-                  <%= ee.submit "Update Exercise", class: "btn btn-info update-exercise" %>
+                    <%= ee.submit "Update Exercise", class: "btn btn-info update-exercise" %>
                 </div>
               </div>
+            </div>
+            </div>
             </div>
           </div>
         </div>
@@ -65,7 +67,7 @@
       <div class="row">
       <div class="col-md-12">
         <h4 class="custom-font white">Tips</h4>
-        <% if @exercise.tips.nil? %>
+        <% if @exercise.tips == 0 %>
           <p class="custom-font white"><em>There are no tips for this exercise yet...</em></p>
         <% else %>
           <% @exercise.tips.each do |t| %>
@@ -83,17 +85,17 @@
       </div>
       <div class="row">
       <div class="col-md-12">
-      <%= form_for :tip, remote: true, url: "exercise/#{@exercise.id}/create_tip/", method: :post, :html => { :id => "tip_form_edit", :class => 'white custom-font' } do |t| %>
-        <!-- <div class="form-group white"> -->
-            <%= t.label :name %>
-            <%= t.text_field :name, class: "form-control" %>
-        <!-- </div> -->
-        <!-- <div class="form-group"> -->
-            <%= t.hidden_field :user_id, :value => session[:current_user_id] %>
-            <%= t.hidden_field :exercise_id, :value => @exercise.id %>
-            <input type="submit" class="btn btn-warning add-tip-button" value="Add Tip">
-        <!-- </div> -->
-      <% end %>
+        <%= form_for :tip, remote: true, url: "exercise/#{@exercise.id}/create_tip/", method: :post, :html => { :id => "tip_form_edit", :class => 'white custom-font' } do |t| %>
+          <!-- <div class="form-group white"> -->
+              <%= t.label :name %>
+              <%= t.text_field :name, class: "form-control" %>
+          <!-- </div> -->
+          <!-- <div class="form-group"> -->
+              <%= t.hidden_field :user_id, :value => session[:current_user_id] %>
+              <%= t.hidden_field :exercise_id, :value => @exercise.id %>
+              <input type="submit" class="btn btn-warning add-tip-button" value="Add Tip">
+          <!-- </div> -->
+        <% end %>
       </div>
     </div>
   </div>

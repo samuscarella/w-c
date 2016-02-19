@@ -1,13 +1,29 @@
 <div class="container-fluid main-body">
   <div class="row">
     <div class="col-md-12">
-      <h1 style="text-align:center;margin:9% 0 3% 0;">Add Exercises</h1>
+      <div class="container-fluid edit-exercise">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Add Exercises</h1>
+          </div>
+        </div>
+      </div>
       <div class="exercises-div">
-        <% @exercises.each do |exercise| %>
-          <%= render exercise %>
+        <% if @exercises.count == 0 %>
+          <div class="container-fluid no-exercises-added">
+            <div class="row">
+              <div class="col-md-12">
+                <h4>There are currently no exercises added...</h4>
+              </div>
+            </div>
+          </div>
+        <% else %>
+            <% @exercises.each do |exercise| %>
+              <%= render exercise %>
+            <% end %>
         <% end %>
       </div>
-      <div class="container-fluid testing">
+      <div class="container-fluid add-exercise-div">
         <div class="row">
           <div class="col-md-12">
             <%= form_for @exercise, url: 'create_exercise', remote: true, :html => { :id => "exercise_form_add" } do |e| %>
@@ -54,7 +70,7 @@
               <div class="form-group">
                   <div class="col-sm-12">
                     <div class="container button-centering">
-                        <%= e.submit "Add Exercise", class: "btn btn-primary add-exercise button-width-full", id: "add-exercise-edit" %>
+                        <%= e.submit "Add Exercise", class: "btn btn-primary add-exercise" %>
                     </div>
                   </div>
               </div>
@@ -62,7 +78,13 @@
             </div>
           </div>
         </div>
-          <%= link_to 'Complete Workout', 'show_workout', id: @workout.id, class: "btn btn-warning finish-workout" %>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12" style="padding-bottom:3%;">
+                <%= link_to 'Complete Workout', 'show_workout', id: @workout.id, class: "btn btn-warning add-exercises" %>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </div>

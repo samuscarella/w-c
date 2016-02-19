@@ -1,424 +1,92 @@
 // Place all the styles related to the Main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.workout-feed {
-  background-color: #A2A79E;
-  margin: -5% 0 0 0;
-  width: 100%;
-  padding: 0 10% 5% 5%;
-}
-.workout-feed-dash {
-  background-color: #F5F1F5;
-  height: 825px;
-  margin: 0;
-  padding: 2%;
-}
-.main-body {
-  padding: 0 10%;
-}
-.main-body-dash {
+.dash-right {
   padding: 0;
-  margin-top: 4%;
+  // background-color: Crimson;
+  height: 100%;
 }
-.custab {
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 5% 0;
-    box-shadow: 3px 3px 2px #ccc;
-    transition: 0.5s;
-}
-.custab:hover {
-    box-shadow: 3px 3px 0px transparent;
-    transition: 0.5s;
-}
-.testing {
-  background-color: #262626;
-  border: 5px solid black;
-  border-top: 12px solid black;
-  border-bottom: 1px solid black;
-  color: white;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 20px 0;
-}
-.testing2 {
-  padding: 0px 15px;
-  margin: 30px 0 0 0;
-  background-color: #262626;
-  color: white;
-  border: 5px solid black;
-  border-top: 5px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 10px;
-}
-.testingtop {
-  margin: 90px 0 0 0;
-  background-color: black;
-  color: white;
-  border: 5px solid black;
-  border-top: 12px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 10px;
-}
-.label-chunk {
-  padding: 1% 0 .5% 0;
-  border: solid 5px black;
-  border-bottom: solid 2px black;
-  border-radius: 10px;
-  background-color: #262626;
-  text-align: center;
-}
-.data-chunk {
-  padding: 1% 0 .5% 0;
-  border: solid 5px black;
-  border-bottom: solid 2px black;
-  border-radius: 10px;
-  background-color: #262626;
-  text-align: center;
-}
-.save-exercise {
-  margin: 10px 0;
-  color: white;
-  border: none;
-  background-color: #255C99;
-}
-.tip-box {
-  padding: 10px;
-  background-color: black;
-  color: white;
-  border: 5px solid #E6E1C5;
-  border-top: none;
-  border-radius: 10px;
-}
-.add-tip {
-  float: right;
-  margin: 10px 0;
-  color: white;
-  border: none;
-  background-color: green;
-}
-.first-row-exercise {
-  text-align: center;
-  background-color: yellow;
-  border: solid white 5px;
-}
-.center-text-now {
-  text-align: center;
-}
-.description-row {
-  height: 175px;
-  background-color: grey;
-  border: solid white 2px;
-  padding: 1% 0;
-  border-radius: 5px;
-  overflow-y: scroll;
-}
-.right-text-now {
-  text-align: right;
-}
+// .dash-container {
+//   height: 100%;
+//   width: 100%;
+// }
 
-.delete-tip {
-  padding: 3px 9px;
+ // navbar left
+
+.left-nav-icon {
+   margin-top: 30%;
+   width: 40px;
+   height: 40px;
+ }
+.nav-left {
+  background-color: #222222;
+  height: 100%;
+  position: fixed;
 }
-.finish-workout {
-  margin: 0% 34% 2% 34%;
-  width: 300px;
-}
-.label-text {
-  margin: 0;
-  margin-bottom: 0%;
-  text-align: center;
-}
-.workout-title {
-  margin: 0px;
-  color: white;
-}
-.title-text {
-  padding: 1% 2%;
-  text-align: center;
-  color: black;
-  border-bottom: solid black 1px;
-}
-#button-delete {
-  margin-top: 10px;
-}
-.description-box-ex {
-  border: groove white 1px;
-  margin: 2% 0;
-  border-radius: 5px;
-  padding: 1% 0;
-}
-.workout-main {
-  margin: 5% auto;
-  border: solid black 2px;
-  border-radius: 10px;
-  display: block;
-}
-.custom-workout {
-  // margin: 4% 25% 0 25%;
-}
-.delete-workout {
-  width: 25%;
-}
-.edit-workout {
-  width: 25%;
-}
-.edit-workout-field {
-  text-align: center;
-}
-.edit-workout-text {
-  color: black;
-}
-.edit-workout-description {
-  width: 100%;
-}
-.update-workout {
-  margin: 4% 0%;
-}
-.delete-workout-edit-page {
-  width: 25%;
-  margin: 4% 38% 0% 38%;
-}
-.update-tip {
-  padding-left: 0;
-}
-.update-tip-field {
-  margin: 1% 0;
-}
-.update-exercise {
-  width: 25%;
-  margin: 2% 38%;
-}
-.inline-headers {
-  display: inline-block;
-}
-.edit-workout-tip {
-  display: inline-block;
-}
-.workout-main {
-  max-width: 400px;
-  width: 400px;
-  margin: 5% auto;
-}
-.push-down {
-  margin: 100px 0;
-}
-.dash-body {
-  margin-top: 4%;
-}
-.login-box {
-  margin-top: 10%;
-}
-.add-exercise {
-  margin: 20% 0;
-  width: 25%;
-}
-.show-workout-container {
-  max-width: 100%;
-  overflow-x: hidden;
-  padding-bottom: 5%;
-}
-.center-dash-table {
-  margin: 5% 0%;
-}
-.dash-feed {
-  background-color: #262626;
-  border-radius: 18px;
-  text-align: center;
-  margin: 3% 0;
-  color: #255C99;
-}
-.custom-font {
-  font-family: 'Century Gothic';
-}
-.black {
-  color: black;
-}
-.gold {
-  color: gold;
-}
-.description-workout-dash {
+.left-nav-div {
   padding: 10px;
-  background-color: #262626;
-  color: #255C99;
-  border: 3px solid black;
-  border-top: none;
-  border-bottom: 1px dotted #262626;
-  border-radius: 10px;
 }
-.description-workout-text {
-  margin: 1%;
+.nav-right {
+  // background-color: aqua;
 }
-.dash-workout-header {
-  border-bottom: 1px dotted #262626;
+.navbar-brand {
+  font-size: 2em;
 }
-.bottom-workout-text {
-  border-bottom: 1px solid #262626;
+.workout-feed {
+  // background-color: orange;
+  margin-top: 4%;
+  padding-top: 2%;
+  margin-left: 8.3%;
 }
-.right-text-now {
-  text-align: center;
+.workout-feed-scroll {
+  padding: 3%;
+  height: 700px;
 }
-.inline-block {
-  display: inline-block;
-}
-.inline {
-  display: inline;
-}
-.workout-label {
-  margin-right: 25px;
-}
-.padding-tighten {
-  padding: 0 1%;
-}
-.workout-dash-header {
-  margin: 0;
-  background-color: #262626;
-}
-.background-color-grey {
-  background-color: #262626;
-  border: none;
-}
-.white {
-  color: white;
-}
-.border-top-workout {
-  border: 5px solid black;
-  border-bottom: 1px solid black;
+.dash-header {
+  margin-bottom: 5%;
 }
 .workout-div {
-  border: solid 1px black;
-}
-.workout-dash-header {
-  text-decoration: underline;
-}
-.border-black {
-  border: solid black 3px;
-}
-.data-chunk {
-  border: solid black 3px;
-  border-bottom: solid black 1px;
-  border-radius: 10px;
-  border-top: none;
-}
-.description-chunk {
-  border: solid black 3px;
-  border-bottom: solid black 1px;
-  border-radius: 10px;
-  border-top: none;
-  background-color:  #262626;
-  padding: 2%;
-}
-.title-workout-container {
-  margin-top: 10%;
-}
-.container-show-label {
-  margin-top: 10%;
-}
-.show-workout-title {
-  border: solid black 3px;
-  border-bottom: solid black 1px;
-  border-radius: 10px;
-  border-top: none;
+  border: solid black 2px;
+  border-radius: 6px;
+  background-color: white;
   padding: 1%;
-  text-align: center;
+  margin-bottom: 1%;
 }
-.show-workout-label {
-  border: solid black 3px;
-  border-bottom: solid black 1px;
-  border-top: solid black 6px;
-  border-radius: 10px;
-  margin-top: 12%;
-  padding: .5%;
+.workout-prof-pic {
+  width: 30px;
+  height: 30px;
 }
-.show-workout-label-two {
-  border: solid black 3px;
-  border-bottom: solid black 1px;
-  border-top: solid black 6px;
-  border-radius: 10px;
-  margin-top: 3%;
-  padding: .5%;
-}
-.show-workout-label-three {
-  border: solid black 3px;
-  border-bottom: solid black 1px;
-  border-top: solid black 6px;
-  border-radius: 10px;
-  margin-top: 6%;
-  padding: .5%;
-}
-.tips-workout-dash {
-  border-top: solid black 1px;
+.workout-default-img-div {
   padding: 1%;
 }
-.show-workout-duration {
-  border: solid black 3px;
-  border-bottom: solid black 1px;
-  border-radius: 10px;
-  border-top: none;
-  padding: 1%;
+.workout-div-bott-text {
+  font-size: 1.1em;
 }
-.center-button {
-  width: 25%;
-  margin: 6% auto 3% auto;
+.navbar-inverse .navbar-brand {
+    color: #EBF5EE;
 }
-.update-workout {
-  width: 100%;
+.navbar-inverse .navbar-nav > li > a {
+    color: #EBF5EE;
 }
-.create-workout-label {
-  margin-top: 10%;
+.navbar {
+  border-radius: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
-.show-workout-bottom-margin {
-  margin-bottom: 6%;
+.user-div {
+  // margin-top: 75%;
+  padding: 10px;
 }
-.add-tip-button {
-  margin-left: 92%;
-  margin-top: 1%;
-}
-.button-centering {
-  width: 200px;
-}
-.dub-button-top {
-  margin: 10% 0;
-}
-.dub-button-top {
-  margin: 10% 0;
-}
-.button-width-full {
-  width: 118%;
-}
-.center-delete-ex {
-  margin: 1% 47%;
-}
-.delete-exercise {
+.user-div-pic {
   width: 40px;
+  height: 40px;
 }
-// small screen queries...
-
-@media only screen and (max-width: 750px) {
-
-    .workout-dash-title {
-        margin-top: 50px;
-    }
-
+.custom-queries {
+  // background-color: aqua;
+  margin-top: 4%;
 }
-
-@media only screen and (min-width: 320px), only screen and (max-width: 750px) {
-
-    .sm-add-exercise {
-        width: 200px;
-    }
-
-}
-
-// medium screen queries...
-
-@media only screen and (min-width: 750px) {
-
-    .inline-dub-button {
-        display: inline-block;
-    }
-    .inline-dub-button-container {
-        width: 450px;
-    }
-
+.workout-link {
+  font-size: 1.2em;
+  background-color: white;
+  color: blue;
 }

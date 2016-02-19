@@ -1,3 +1,47 @@
 // Place all the styles related to the Exercises controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.add-exercises {
+  display: block;
+  margin: 0 44%;
+}
+.add-exercise {
+  display: block;
+  margin: 1% auto;
+}
+.add-exercise-div {
+  background-color: black;
+  color: white;
+  margin: 2% 0;
+  padding: 2%;
+  border: solid black 2px;
+  border-radius: 6px;
+}
+.no-exercises-added {
+  background-color: #757761;
+  color: white;
+  border: dashed black 2px;
+  text-align: center;
+  padding: 1%;
+  margin: 2% 0;
+  // border-radius: 6px;
+}
+.delete-exercise {
+  display: block;
+  margin: 0 48%;
+  // width: 10px;
+}
+.edit-exercise {
+  background-color: black;
+  color: white;
+  margin: 2% 0 0 0;
+  padding: 2%;
+  border: solid white 2px;
+  border-radius: 6px;
+}
+.gold {
+  color: gold;
+}
+.update-exercise {
+  margin: 2% 44%;
+}

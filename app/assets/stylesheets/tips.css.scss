@@ -1,3 +1,15 @@
 // Place all the styles related to the Tips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.add-tip-button {
+  float: right;
+  margin-top: 1%;
+}
+.edit-exercise-tip-div {
+  background-color: black;
+  color: white;
+  padding: 2%;
+  border: solid white 2px;
+  border-top: none;
+  border-radius: 6px;
+}

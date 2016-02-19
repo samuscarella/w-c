@@ -1,0 +1,4 @@
+$('.delete-tip').bind('ajax:success', function() {
+    $('div#<%= dom_id(@tip) %>').fadeOut();
+    return false;
+});

@@ -1,0 +1,4 @@
+<%= div_for tip do %>
+<%= button_to "x", delete_tip_path(:id => tip.id), method: :delete, :remote => true, :class => "btn btn-danger delete-tip" %>
+  <p>* <%= tip.name %></p>
+<% end %>

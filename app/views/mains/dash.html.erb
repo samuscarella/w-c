@@ -1,76 +1,141 @@
-<div class="container dash-body">
-  <!-- <div class="container-fluid testing2 padding-tighten-dash-header border-black"> -->
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="workout-dash-title custom-font center-text-now">ALL WORKOUTS</h1>
+<div class="container-fluid dash-container">
+  <div class="row">
+    <div class="col-md-12 dash-right">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" rel="home" href="/" id="logo">Gainz</a>
+          </div>
+           <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                    <li><a href="/dash">Home</a></li>
+                    <li><a href="/new_workout">New Workout</a></li>
+                    <li><a href="/workouts">My Workouts</a></li>
+              </ul>
+              <% if logged_in? %>
+              <ul class="nav navbar-nav right-nav">
+                  <li><a href="/logout">Logout</a></li>
+              </ul>
+              <% end %>
+            <div class="col-sm-3 col-md-3 pull-right search-bar">
+                 <div class="navbar-text"></div>
+                 <form class="navbar-form" role="search">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                      </div>
+                    </div>
+                 </form>
+            </div>
+          </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-1 nav-left">
+            <div class="container-fluid nav-left-container">
+              <div class="row">
+                <div class="col-md-12 user-div">
+                  <a href="#">
+                    <%= image_tag("profile-white.png", class: "user-div-pic") %>
+                  </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 left-nav-div">
+                  <a href="#">
+                    <%= image_tag("home.png", class: "left-nav-icon") %>
+                  </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 left-nav-div">
+                  <a href="#">
+                  <%= image_tag("dashboard.png", class: "left-nav-icon") %>
+                </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 left-nav-div">
+                  <%= image_tag("home.png", class: "left-nav-icon") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 left-nav-div">
+                  <%= image_tag("home.png", class: "left-nav-icon") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 left-nav-div">
+                  <%= image_tag("home.png", class: "left-nav-icon") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 left-nav-div">
+                  <%= image_tag("home.png", class: "left-nav-icon") %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 workout-feed">
+            <h1 class="text-center dash-header">(search bar)</h1>
+            <div class="container-fluid workout-feed-scroll">
+                <% @workouts.each do |workout| %>
+                    <div class="row workout-div">
+                        <!-- <div class="col-md-1 workout-default-img-div">
+                          <%= image_tag("profile27.png", class: "workout-prof-pic") %>
+                        </div> -->
+                        <div class="col-md-12">
+                          <div class="row">
+                            <div class="col-md-5" style="padding-top:1%;">
+                              <%= link_to workout.title, {controller: "workouts", action: "showWorkout", id: workout.id }, class: "workout-link" %>
+                            </div>
+                            <div class="col-md-3">
+                                <h4><%= workout.difficulty %></h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 style="display:inline-block;">Rating</h4>
+                                <%= image_tag("star.png", class: "star") %>
+                                <%= image_tag("star.png", class: "star") %>
+                                <%= image_tag("star.png", class: "star") %>
+                                <%= image_tag("star.png", class: "star") %>
+                                <%= image_tag("star.png", class: "star") %>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <h5><%= workout.description %></h5>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3">
+                              <h5 class="workout-div-bott-text"># of Exercises: <%= workout.exercises.count %></h5>
+                            </div>
+                            <div class="col-md-3">
+                              <h5 class="workout-div-bott-text">Gym Membership</h5>
+                            </div>
+                            <div class="col-md-3">
+                              <h5 class="workout-div-bott-text">Duration: 1 Hour</h5>
+                            </div>
+                            <div class="col-md-3">
+                              <h5 class="workout-div-bott-text"><%= image_tag("profile-black.png", class: "workout-prof-pic") %> <%= workout.user.username %></h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                </div>
+              </div>
+          <div class="col-md-3 custom-queries">
+            <h1 class="text-center">Custom Queries</h1>
+          </div>
+        </div>
       </div>
     </div>
-  <!-- </div> -->
-  <% @workouts.each do |workout| %>
-    <div class="container-fluid testing2 white border-top-workout">
-      <div class="row background-color-grey">
-        <div class="col-md-6">
-          <h3 class="custom-font white"><%= link_to workout.title, workout_path(workout, :id => workout.id), class: "white workout-dash-header" %></h3>
-        </div>
-        <div class="col-md-3">
-          <h3 class="custom-font white"><%= workout.difficulty %></h3>
-        </div>
-        <div class="col-md-3">
-          <h3 class="custom-font">Rating
-            <span style="margin-left:6%">
-             <i class="fa fa-star gold"></i>
-             <i class="fa fa-star gold"></i>
-             <i class="fa fa-star gold"></i>
-             <i class="fa fa-star gold"></i>
-             <i class="fa fa-star gold"></i>
-           </span>
-          </h3>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid description-workout-dash workout-div">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="description-workout-text white"><%= workout.description %></p>
-          <p style="text-align:right" class="white">Last Updated On: <%= workout.updated_at %></p>
-          <p style="text-align:right" class="white">Created On: <%= workout.created_at %></p>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid description-workout-dash bottom-workout-text padding-tighten  workout-div">
-      <div class="row">
-        <div class="col-md-4">
-          <h4 class="custom-font workout-label white">Duration: <%= workout.duration %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4 class="custom-font workout-label white"># of Exercises: <%= workout.exercises.count %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4 class="custom-font workout-label white">Creator:  <%= workout.user.username %></h4>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid description-workout-dash bottom-workout-text padding-tighten  workout-div">
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="custom-font workout-label white">Targeted Muscles:
-            <% workout.targeted_muscles.each do |tm| %>
-             <p class="inline">| <%= tm.name %></p>
-            <% end %>
-          </h4>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid description-workout-dash bottom-workout-text padding-tighten workout-div">
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="custom-font workout-label white">Equipment:
-            <% workout.exercises.each do |ex| %>
-              <%= ex.equipment %>
-            <% end %>
-          </h4>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  </div>
 </div>

@@ -1,0 +1,65 @@
+<!-- <div class="container-fluid testing2 white border-top-workout">
+  <div class="row background-color-grey">
+    <div class="col-md-6">
+      <h3 class="custom-font white"><%= link_to workout.title, workout_path(workout, :id => workout.id), class: "white workout-dash-header" %></h3>
+    </div>
+    <div class="col-md-3">
+      <h3 class="custom-font white"><%= workout.difficulty %></h3>
+    </div>
+    <div class="col-md-3">
+      <h3 class="custom-font">Rating
+        <span style="margin-left:6%">
+         <i class="fa fa-star gold"></i>
+         <i class="fa fa-star gold"></i>
+         <i class="fa fa-star gold"></i>
+         <i class="fa fa-star gold"></i>
+         <i class="fa fa-star gold"></i>
+       </span>
+      </h3>
+    </div>
+  </div>
+</div>
+<div class="container-fluid description-workout-dash workout-div">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="description-workout-text white"><%= workout.description %></p>
+      <p style="text-align:right" class="white">Last Updated On: <%= workout.updated_at %></p>
+      <p style="text-align:right" class="white">Created On: <%= workout.created_at %></p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid description-workout-dash bottom-workout-text padding-tighten  workout-div">
+  <div class="row">
+    <div class="col-md-4">
+      <h4 class="custom-font workout-label white">Duration: <%= workout.duration %></h4>
+    </div>
+    <div class="col-md-4">
+      <h4 class="custom-font workout-label white"># of Exercises: <%= workout.exercises.count %></h4>
+    </div>
+    <div class="col-md-4">
+      <h4 class="custom-font workout-label white">Creator:  <%= workout.user.username %></h4>
+    </div>
+  </div>
+</div>
+<div class="container-fluid description-workout-dash bottom-workout-text padding-tighten  workout-div">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="custom-font workout-label white">Targeted Muscles:
+        <% workout.targeted_muscles.each do |tm| %>
+         <p class="inline">| <%= tm.name %></p>
+        <% end %>
+      </h4>
+    </div>
+  </div>
+</div>
+<div class="container-fluid description-workout-dash bottom-workout-text padding-tighten workout-div">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="custom-font workout-label white">Equipment:
+        <% workout.exercises.each do |ex| %>
+          <%= ex.equipment %>
+        <% end %>
+      </h4>
+    </div>
+  </div>
+</div> -->

@@ -39,9 +39,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find(params[:id])
     respond_to do |format|
       if @exercise.destroy
-        format.html { redirect_to controller: 'mains', action: 'editWorkout', id: params[:workout_id] }
-        format.json { head :no_content }
-        format.js   { render :layout => false }
+        format.js
        else
          format.html { render action: 'addExercise' }
          format.json { render json: @tip.errors.full_messages, status: :unprocessable_entity }
